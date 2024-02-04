@@ -81,6 +81,7 @@ function App() {
         opts={introVidOpts}
         style={{ height: '100vh', width: '100vw' }}
         onReady={(event) => {
+          event.target.setVolume(0);
           event.target.playVideo();
           youtubePlayer.current = event.target;
         }}
