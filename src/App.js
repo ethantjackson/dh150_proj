@@ -24,9 +24,6 @@ function App() {
         onReady={(event) => {
           event.target.playVideo();
         }}
-        onError={(event) => {
-          event.target.playVideo();
-        }}
         onEnd={(event) => {
           event.target.playVideo();
         }}
