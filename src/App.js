@@ -38,7 +38,7 @@ function App() {
       loop: 1,
       controls: 0,
       disablekb: 1,
-      // origin: window.location.origin,
+      origin: window.location.origin,
     },
   };
 
@@ -69,7 +69,7 @@ function App() {
             opacity: `${1 - scrollRatio * 3}`,
           }}
         >
-          <ParallaxLayer offset={0.3} speed={0.1}>
+          <ParallaxLayer offset={0.3} speed={-0.5}>
             <Typography variant='h1' color='textPrimary'>
               Jazz
             </Typography>
