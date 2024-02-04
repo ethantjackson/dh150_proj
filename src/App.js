@@ -18,7 +18,7 @@ function App() {
     const scrollRatio = parallaxRef.current.current / parallaxRef.current.space;
     setScrollRatio(scrollRatio);
     if (!youtubePlayer.current) return;
-    youtubePlayer.current.setVolume((scrollRatio * 20) ** 2);
+    youtubePlayer.current.setVolume((scrollRatio * 40) ** 2);
   };
 
   useEffect(() => {
