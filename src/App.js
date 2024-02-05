@@ -127,6 +127,7 @@ function App() {
                   position: 'absolute',
                   left: '0',
                   top: '0',
+                  objectFit: 'cover',
                 }}
               />
               <Box
