@@ -33,7 +33,7 @@ function App() {
     {
       mediaRef: samaraJoyAudio,
       start: 12,
-      end: 15,
+      end: 14.5,
       startTime: 0,
     },
   ];
@@ -106,7 +106,7 @@ function App() {
           <Parallax
             className='parallax'
             ref={parallaxRef}
-            pages={15}
+            pages={20}
             style={{
               left: '0',
               top: '0',
@@ -865,12 +865,15 @@ function App() {
                     p={1.5}
                   >
                     <Typography variant='body2' color='textPrimary'>
-                      “Even in jazz - you look at the white bandleaders - if
-                      they don't want anybody messing with them when they are
-                      working, you don't hear anybody squawking. It's just if a
-                      Negro is involved that there's something wrong with him.
-                      My troubles started when I learned to play the trumpet and
-                      hadn't learned to dance.” - <b>Miles Davis</b>
+                      <i>
+                        “Even in jazz - you look at the white bandleaders - if
+                        they don't want anybody messing with them when they are
+                        working, you don't hear anybody squawking. It's just if
+                        a Negro is involved that there's something wrong with
+                        him. My troubles started when I learned to play the
+                        trumpet and hadn't learned to dance.”
+                      </i>{' '}
+                      - <b>Miles Davis</b>
                     </Typography>
                   </Box>
                 </Box>
@@ -944,7 +947,7 @@ function App() {
               </Box>
             </ParallaxLayer>
             <ParallaxLayer
-              sticky={{ start: 12.5, end: 15 }}
+              sticky={{ start: 12.5, end: 13.8 }}
               style={{
                 opacity: `${scrollRatio - 12}`,
                 backgroundColor: 'black',
@@ -966,7 +969,7 @@ function App() {
               />
             </ParallaxLayer>
             <ParallaxLayer
-              sticky={{ start: 13, end: 15 }}
+              sticky={{ start: 13, end: 13.8 }}
               sx={{ zIndex: '-1' }}
             >
               <Box
@@ -1027,6 +1030,165 @@ function App() {
                   </Typography>
                 </Box>
               </Box>
+              <Box
+                sx={{
+                  width: '70vw',
+                  marginLeft: '15vw',
+                  height: '100vh',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  position: 'absolute',
+                  top: '0',
+                  right: `${4 * (scrollRatio - 13.5) * 100}vw`,
+                }}
+              >
+                <Box
+                  sx={{ height: '70vh' }}
+                  component={'img'}
+                  src={'/samarajoy.jpg'}
+                />
+                <Box sx={{ position: 'absolute' }}>
+                  <Box
+                    sx={{
+                      backgroundColor: 'rgba(0,0,0,0.8)',
+                      position: 'relative',
+                      top: '20vh',
+                      left: '10px',
+                      width: '400px',
+                      textAlign: 'left',
+                      zIndex: '1',
+                    }}
+                    p={1.5}
+                  >
+                    <Typography variant='body2' color='textPrimary'>
+                      <i>
+                        “The art of interpretation is definitely a sensitive
+                        one, I think about this quote from the great trumpet
+                        player Clark Terry, which I believe is: ‘Imitation,
+                        assimilation and then innovation.’”
+                      </i>{' '}
+                      - <b>Samara Joy</b>
+                    </Typography>
+                  </Box>
+                </Box>
+              </Box>
+              <Box
+                sx={{
+                  width: '70vw',
+                  marginLeft: '15vw',
+                  height: '100vh',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  position: 'absolute',
+                  top: '0',
+                  right: `${4 * (scrollRatio - 13.63) * 100}vw`,
+                }}
+              >
+                <Box
+                  sx={{ height: '70vh' }}
+                  component={'img'}
+                  src={
+                    'https://thegrio.com/wp-content/uploads/2024/02/GettyImages-1463218015-1.jpg?w=1074'
+                  }
+                />
+                <Box sx={{ position: 'absolute' }}>
+                  <Box
+                    sx={{
+                      backgroundColor: 'rgba(0,0,0,0.8)',
+                      position: 'relative',
+                      top: '20vh',
+                      left: '250px',
+                      width: '400px',
+                      textAlign: 'left',
+                    }}
+                    p={1.5}
+                  >
+                    <Typography variant='body2' color='textPrimary'>
+                      “She’s also unafraid to try new things, even going so far
+                      as to explore vocals in other languages. To prepare for an
+                      upcoming trip to Brazil, she learned a song in Portuguese
+                      ('Living Flower'), and at the Vanguard, she sang it in a
+                      Bossa Nova style as effervescent as any Sao Paulo native
+                      could deliver. Joy also crooned a segment of 'April in
+                      Paris' in French (she said she Google-translated the
+                      lyrics on a recent flight there).”
+                    </Typography>
+                  </Box>
+                </Box>
+              </Box>
+              <Box
+                sx={{
+                  width: '70vw',
+                  marginLeft: '15vw',
+                  height: '100vh',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  position: 'absolute',
+                  top: '0',
+                  right: `${4 * (scrollRatio - 13.787) * 100}vw`,
+                }}
+              >
+                <Box
+                  sx={{ height: '70vh' }}
+                  component={'img'}
+                  src={
+                    'https://media.npr.org/assets/img/2023/03/16/mt_samarajoy_shot2-121_as_re_proof-d50c69470576772eb0a79dc8f2132b3dc042feeb.jpg'
+                  }
+                />
+                <Box sx={{ position: 'absolute' }}>
+                  <Box
+                    sx={{
+                      backgroundColor: 'rgba(0,0,0,0.8)',
+                      position: 'relative',
+                      top: '20vh',
+                      left: '150px',
+                      width: '400px',
+                      textAlign: 'left',
+                    }}
+                    p={1.5}
+                  >
+                    <Typography variant='body2' color='textPrimary'>
+                      Evidently, Joy takes Clark Terry’s aforementioned quote to
+                      heart. Through “imitation, assimilation and then
+                      innovation”, Joy engages meaningfully with an extensive
+                      jazz culture steeped in a history of great musicians like
+                      Lead Belly and Miles Davis. In Joy’s vocals, you can hear
+                      clear hints of Billie Holliday, Ella Fitzgerald, and Sarah
+                      Vaughan that speak to more than just her musical ability.
+                      Joy embodies the same values that the Village Vanguard
+                      stands for – unadulterated appreciation for and
+                      contribution to an immensely diverse jazz culture.
+                    </Typography>
+                  </Box>
+                </Box>
+              </Box>
+            </ParallaxLayer>
+
+            {/* CONCLUSION */}
+            <ParallaxLayer
+              sticky={{ start: 14.8, end: 16 }}
+              style={{
+                // opacity: `${scrollRatio - 12}`,
+                backgroundColor: 'black',
+                zIndex: '-1',
+              }}
+            >
+              <Box
+                component='img'
+                src='https://tbo.de/wp-content/uploads/2022/11/644ce1f2-f512-11e4-abb5-00144feab7de.jpeg'
+                sx={{
+                  width: '100%',
+                  height: '100%',
+                  position: 'absolute',
+                  left: '0',
+                  top: '0',
+                  objectFit: 'cover',
+                  zIndex: '-1',
+                }}
+              />
             </ParallaxLayer>
           </Parallax>
         )}
