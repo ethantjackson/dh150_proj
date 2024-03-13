@@ -9,6 +9,7 @@ function App() {
   const leadbellyAudio = useRef();
   const milesDavisAudio = useRef();
   const samaraJoyAudio = useRef();
+  const billEvansAudio = useRef();
   const [readyClicked, setReadyClicked] = useState(false);
 
   const audios = [
@@ -34,6 +35,12 @@ function App() {
       mediaRef: samaraJoyAudio,
       start: 12,
       end: 14.5,
+      startTime: 0,
+    },
+    {
+      mediaRef: billEvansAudio,
+      start: 14,
+      end: 17,
       startTime: 0,
     },
   ];
@@ -106,7 +113,7 @@ function App() {
           <Parallax
             className='parallax'
             ref={parallaxRef}
-            pages={20}
+            pages={16}
             style={{
               left: '0',
               top: '0',
@@ -1168,10 +1175,13 @@ function App() {
             </ParallaxLayer>
 
             {/* CONCLUSION */}
+            <audio loop ref={billEvansAudio}>
+              <source src='/billevans.mp3' type='audio/mp3' />
+              Your browser does not support the audio element.
+            </audio>
             <ParallaxLayer
-              sticky={{ start: 14.8, end: 16 }}
+              sticky={{ start: 14.8, end: 15.075 }}
               style={{
-                // opacity: `${scrollRatio - 12}`,
                 backgroundColor: 'black',
                 zIndex: '-1',
               }}
@@ -1189,6 +1199,36 @@ function App() {
                   zIndex: '-1',
                 }}
               />
+            </ParallaxLayer>
+            <ParallaxLayer offset={15.5} speed={2}>
+              <Box
+                sx={{
+                  backgroundColor: 'rgba(0,0,0,0.8)',
+                  width: '60vw',
+                  marginLeft: '20vw',
+                  textAlign: 'left',
+                  padding: '1.6rem 2rem 2rem 2rem',
+                }}
+              >
+                <Typography variant='h3' color='textPrimary' mb={1}>
+                  The Vanguard Legacy
+                </Typography>
+                <Typography
+                  variant='body1'
+                  color='textPrimary'
+                  sx={{ fontSize: '1.3rem', textAlign: 'left' }}
+                >
+                  Whether it’s Lead Belly’s Mexican-inspired 12-string guitar,
+                  Miles Davis’ multi-racial quintets, or Samara Joy’s language
+                  and genre-blending performances, jazz, and the Village
+                  Vanguard in particular, has been a point of cultural exchange
+                  and a force for breaking cultural barriers. When we appreciate
+                  music for music’s sake, as the Village Vanguard has encouraged
+                  throughout the years, we can look past – or better yet –
+                  appreciate our differences and create something that
+                  transcends our individual selves.
+                </Typography>
+              </Box>
             </ParallaxLayer>
           </Parallax>
         )}
