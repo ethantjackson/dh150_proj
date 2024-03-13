@@ -67,6 +67,7 @@ function App() {
     return () => {
       container.removeEventListener('scroll', handleScroll);
     };
+    // eslint-disable-next-line
   }, [readyClicked]);
 
   const themeOptions = {
