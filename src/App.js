@@ -2,6 +2,21 @@ import { useEffect, useRef, useState } from 'react';
 import { createTheme, ThemeProvider, Typography, Box } from '@mui/material';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 
+const CiteLink = ({ citeIdx }) => {
+  return (
+    <Typography
+      variant='caption'
+      sx={{
+        position: 'relative',
+        bottom: '0.3rem',
+        color: 'grey',
+      }}
+    >
+      [{citeIdx}]
+    </Typography>
+  );
+};
+
 function App() {
   const parallaxRef = useRef();
   const introVideo = useRef();
@@ -42,6 +57,41 @@ function App() {
       start: 14,
       end: 17,
       startTime: 0,
+    },
+  ];
+
+  const citations = [
+    {
+      citation:
+        'Bogdal, John. “12 String Guitar History: From the Street to the Stage.” Stringjoy, 10 Jan. 2021, stringjoy.com/12-string-guitar-street-stage/.',
+    },
+    {
+      citation:
+        'Haley, Alex, and Murray Fisher. The Playboy Interviews. Ballantine, 1993.',
+    },
+    {
+      citation:
+        'Kassel, Matthew. “As the Village Vanguard Turns 80, It Remains New York’s Most Cherished Jazz Club.” Observer, 27 Apr. 2017, observer.com/2015/02/as-the-village-vanguard-turns-80-it-remains-new-yorks-most-cherished-jazz-club/.',
+    },
+    {
+      citation:
+        'Komara, Edward. Encyclopedia of the Blues. Vol. 1, Routledge, 2006.',
+    },
+    {
+      citation:
+        'LeDonne, Rob. “Samara Joy Is Making History While Making Jazz Her Own.” Observer, 9 May 2023, observer.com/2023/05/jazz-vocalist-samara-joy-grammys-village-vanguard/.',
+    },
+    {
+      citation:
+        '“Lorraine Gordon on Discovering Thelonious Monk.” National Endowment for the Arts, 26 Oct. 2013, www.arts.gov/stories/jazz-moments/lorraine-gordon-discovering-thelonious-monk.',
+    },
+    {
+      citation:
+        'Reynolds, John. Lead Belly: A Life in Pictures. Steidl GmbH & Co. OHG, 2024.',
+    },
+    {
+      citation:
+        '“The Village Vanguard: A Hallowed Basement.” NPR, NPR, 27 Aug. 2008, www.npr.org/2008/08/27/94034531/the-village-vanguard-a-hallowed-basement.',
     },
   ];
 
@@ -113,7 +163,7 @@ function App() {
           <Parallax
             className='parallax'
             ref={parallaxRef}
-            pages={16}
+            pages={16.5}
             style={{
               left: '0',
               top: '0',
@@ -262,8 +312,8 @@ function App() {
                       In 1935, Lithuanian immigrant, Max Gordon, opened the
                       Village Vanguard. The Village Vanguard initially operated
                       "in the tradition of a Viennese cabaret and poetry house,
-                      featuring the likes of Maxwell Bodenheim and Joe Gould"
-                      (Observer).
+                      featuring the likes of Maxwell Bodenheim and Joe Gould".
+                      <CiteLink citeIdx={3} />
                     </Typography>
                   </Box>
                 </Box>
@@ -311,6 +361,7 @@ function App() {
                     <Typography variant='body2' color='textPrimary'>
                       - <b>Loren Schoenberg</b>, artistic director of the
                       National Jazz Museum in Harlem
+                      <CiteLink citeIdx={3} />
                     </Typography>
                   </Box>
                 </Box>
@@ -356,12 +407,14 @@ function App() {
                       Undeniably, she has contributed greatly to the Village
                       Vanguard's continued commitment to innovation and
                       appreciation in jazz. Lorraine has contributed to a space
-                      that is "common, in a way," where audience and artist can
-                      have a uniquely intimate exchange. Lorraine has been
-                      credited with discovering prolific jazz pianist Thelonias
-                      Monk in the 40s when she convinced her then-husband (the
-                      founder of the jazz label Blue Note) to record the
-                      eccentric musician and composer.
+                      she calls "common, in a way,"
+                      <CiteLink citeIdx={8} /> where audience and artist can
+                      have a uniquely intimate exchange. Lorraine was
+                      responsible for bringing the then-obscure now-prolific
+                      jazz pianist Thelonias Monk in the 40s when she convinced
+                      Max Gordon (prior to their marriage) to book the eccentric
+                      musician and composer at the Vanguard.
+                      <CiteLink citeIdx={6} />
                     </Typography>
                   </Box>
                 </Box>
@@ -399,7 +452,7 @@ function App() {
                   >
                     It wasn't until the mid 1950's that The Village Vanguard
                     narrowed its scope to only jazz. In 1957, the first on-site
-                    jazz album was recorded - Sunny Rollins'
+                    jazz album was recorded - Sunny Rollins'{' '}
                     <i>A Night at the Village Vanguard</i>. Shortly after, a
                     string of now-classic on-site albums were recorded by jazz
                     legends like John Coltrane, Bill Evans, Gerry Mulligan, and
@@ -417,14 +470,14 @@ function App() {
                     inception of jazz in America. In the late 30s and early 40s,
                     The Vanguard saw the beginnings of calypso legend Harry
                     Belafonte (left) and blues/folk great Lead Belly (right).
-                    The Village Vanguard quickly became a place where acts like
-                    Belafonte and Lead Belly could exist no longer as black
-                    entertainers, but as serious musicians. By following the
-                    different musicians who found themselves on the Vanguard
-                    bandstand throughout the years, we can follow the evolution
-                    of jazz as a uniquely vibrant and diverse genre that finds
-                    innovation in the appreciation and inclusion of other
-                    musical cultures.
+                    <CiteLink citeIdx={3} /> The Village Vanguard quickly became
+                    a place where acts like Belafonte and Lead Belly could exist
+                    no longer as black entertainers, but as serious musicians.
+                    By following the different musicians who found themselves on
+                    the Vanguard bandstand throughout the years, we can follow
+                    the evolution of jazz as a uniquely vibrant and diverse
+                    genre that finds innovation in the appreciation and
+                    inclusion of other musical cultures.
                   </Typography>
                 </Box>
               </Box>
@@ -539,8 +592,9 @@ function App() {
                     prolific musicianship, Lead Belly’s career was plagued with
                     overbearing media coverage that focused on his race,
                     criminal history, and various controversies that detracted
-                    from his music. Regardless, with platforms like The Village
-                    Vanguard, Lead Belly’s musical legacy was eventually
+                    from his music.
+                    <CiteLink citeIdx={4} /> Regardless, with platforms like The
+                    Village Vanguard, Lead Belly’s musical legacy was eventually
                     solidified. Lead Belly’s influence is apparent not only in
                     his contemporaries but also in later acts including the
                     Beatles and even Nirvana, who wore their influence on their
@@ -598,6 +652,7 @@ function App() {
                       light district of Lousianna. Here, Lead Belly began
                       playing at the various salloons, dance halls, and
                       brothels.
+                      <CiteLink citeIdx={4} />
                     </Typography>
                   </Box>
                 </Box>
@@ -647,6 +702,7 @@ function App() {
                       sexto. As such, these instruments were usually cheaply
                       made and consequently made their way into the hands of
                       poor blues musicians like Lead Belly.
+                      <CiteLink citeIdx={1} />
                     </Typography>
                   </Box>
                 </Box>
@@ -691,10 +747,11 @@ function App() {
                       Timeless Influence
                     </Typography>
                     <Typography variant='body2' color='textPrimary'>
-                      George Harrison of Beatles fame has said, "No Leadbelly,
-                      no Lonnie Donnegan, No Beatles". Evidently, Lead Belly's
-                      musical influence endured despite a lack of recognition
-                      throughout much of his lifetime.
+                      George Harrison of Beatles fame has said, "No Lead Belly,
+                      no Lonnie Donegan. Therefore no Lead Belly, no Beatles".
+                      <CiteLink citeIdx={7} /> Evidently, Lead Belly's musical
+                      influence endured despite a lack of recognition throughout
+                      much of his lifetime.
                     </Typography>
                   </Box>
                 </Box>
@@ -834,8 +891,8 @@ function App() {
                       practiced. “I think prejudice one way is just as bad as
                       the other way. I wouldn't have no other arranger but Gil
                       Evans - we couldn't be much closer if he was my brother.”
-                      Davis respected this aspect of jazz that welcomes all to
-                      participate and contribute.
+                      <CiteLink citeIdx={2} /> Davis respected this aspect of
+                      jazz that welcomes all to participate and contribute.
                     </Typography>
                   </Box>
                 </Box>
@@ -881,6 +938,7 @@ function App() {
                         trumpet and hadn't learned to dance.”
                       </i>{' '}
                       - <b>Miles Davis</b>
+                      <CiteLink citeIdx={2} />
                     </Typography>
                   </Box>
                 </Box>
@@ -920,10 +978,12 @@ function App() {
                       Perhaps Davis' sometimes fierce commitment to music for
                       music's sake is what attracted him to the Village
                       Vanguard. With only 132 people able to squeeze into its
-                      confines, the Vanguard forces the audience to engage with
-                      the musicians practically within arm's reach. Indeed, the
-                      Vanguard has forced countless people and musicians from
-                      all walks of life into this intimate exchange since 1935.
+                      confines
+                      <CiteLink citeIdx={8} />, the Vanguard forces the audience
+                      to engage with the musicians practically within arm's
+                      reach. Indeed, the Vanguard has forced countless people
+                      and musicians from all walks of life into this intimate
+                      exchange since 1935.
                     </Typography>
                   </Box>
                 </Box>
@@ -1012,12 +1072,13 @@ function App() {
                     innovation. After Max Gordon’s passing in 1989, his wife
                     Lorain Gordon took ownership of the club, and "championed
                     younger players, like the trio The Bad Plus and pianist Brad
-                    Mehldau” much like her husband did. These aforementioned
-                    acts continue to pioneer new sounds in jazz and tend to push
-                    many layman listeners well beyond their comfort zone.
-                    Indeed, jazz continues to evolve even today at the Village
-                    Vanguard, and this is best embodied by a recent performer at
-                    the club, Samara Joy.
+                    Mehldau” much like her husband did.
+                    <CiteLink citeIdx={8} /> These aforementioned acts continue
+                    to pioneer new sounds in jazz and tend to push many layman
+                    listeners well beyond their comfort zone. Indeed, jazz
+                    continues to evolve even today at the Village Vanguard, and
+                    this is best embodied by a recent performer at the club,
+                    Samara Joy.
                   </Typography>
                   <Typography
                     variant='body1'
@@ -1028,12 +1089,13 @@ function App() {
                     Joy’s position as a key proponent of contemporary jazz has
                     been solidified by her recent Grammy winnings, including
                     Best New Artist and Best Jazz Vocal. She is the second-ever
-                    Jazz artist to win in the new artist category, which speaks
-                    to her ability to keep the jazz conversation alive in
-                    America. Joy, much like Lead Belly and Miles Davis,
-                    participates in a jazz that is appreciative of other
-                    cultures. With her genre and even language-blending style,
-                    Joy shows genuine engagement with other musical cultures.
+                    Jazz artist to win in the new artist category
+                    <CiteLink citeIdx={5} />, which speaks to her ability to
+                    keep the jazz conversation alive in America. Joy, much like
+                    Lead Belly and Miles Davis, participates in a jazz that is
+                    appreciative of other cultures. With her genre and even
+                    language-blending style, Joy shows genuine engagement with
+                    other musical cultures.
                   </Typography>
                 </Box>
               </Box>
@@ -1076,6 +1138,7 @@ function App() {
                         assimilation and then innovation.’”
                       </i>{' '}
                       - <b>Samara Joy</b>
+                      <CiteLink citeIdx={5} />
                     </Typography>
                   </Box>
                 </Box>
@@ -1113,14 +1176,18 @@ function App() {
                     p={1.5}
                   >
                     <Typography variant='body2' color='textPrimary'>
-                      “She’s also unafraid to try new things, even going so far
-                      as to explore vocals in other languages. To prepare for an
-                      upcoming trip to Brazil, she learned a song in Portuguese
-                      ('Living Flower'), and at the Vanguard, she sang it in a
-                      Bossa Nova style as effervescent as any Sao Paulo native
-                      could deliver. Joy also crooned a segment of 'April in
-                      Paris' in French (she said she Google-translated the
-                      lyrics on a recent flight there).”
+                      <i>
+                        “She’s also unafraid to try new things, even going so
+                        far as to explore vocals in other languages. To prepare
+                        for an upcoming trip to Brazil, she learned a song in
+                        Portuguese ('Living Flower'), and at the Vanguard, she
+                        sang it in a Bossa Nova style as effervescent as any Sao
+                        Paulo native could deliver. Joy also crooned a segment
+                        of 'April in Paris' in French (she said she
+                        Google-translated the lyrics on a recent flight there).”
+                      </i>{' '}
+                      - <b>Rob LeDonne</b>, culture and music writer
+                      <CiteLink citeIdx={5} />
                     </Typography>
                   </Box>
                 </Box>
@@ -1180,7 +1247,7 @@ function App() {
               Your browser does not support the audio element.
             </audio>
             <ParallaxLayer
-              sticky={{ start: 14.8, end: 15.075 }}
+              sticky={{ start: 14.8, end: 20 }}
               style={{
                 backgroundColor: 'black',
                 zIndex: '-1',
@@ -1216,7 +1283,7 @@ function App() {
                 <Typography
                   variant='body1'
                   color='textPrimary'
-                  sx={{ fontSize: '1.3rem', textAlign: 'left' }}
+                  sx={{ fontSize: '1.3rem' }}
                 >
                   Whether it’s Lead Belly’s Mexican-inspired 12-string guitar,
                   Miles Davis’ multi-racial quintets, or Samara Joy’s language
@@ -1228,6 +1295,38 @@ function App() {
                   appreciate our differences and create something that
                   transcends our individual selves.
                 </Typography>
+              </Box>
+            </ParallaxLayer>
+            <ParallaxLayer offset={15.95} speed={0.5}>
+              <Box
+                sx={{
+                  backgroundColor: 'rgba(0,0,0,0.8)',
+                  width: '60vw',
+                  marginLeft: '20vw',
+                  textAlign: 'left',
+                  padding: '1.6rem 2rem 2rem 2rem',
+                }}
+              >
+                <Typography variant='h4' color='textPrimary' mb={2}>
+                  Works Cited
+                </Typography>
+                {citations.map(({ citation }, index) => (
+                  <Typography
+                    variant='body1'
+                    color='textPrimary'
+                    mb={1.5}
+                    id={index + 1}
+                  >
+                    <Typography
+                      variant='caption'
+                      color='grey'
+                      sx={{ position: 'relative', bottom: '0.35rem' }}
+                    >
+                      [{index + 1}]{' '}
+                    </Typography>
+                    {citation}
+                  </Typography>
+                ))}
               </Box>
             </ParallaxLayer>
           </Parallax>
