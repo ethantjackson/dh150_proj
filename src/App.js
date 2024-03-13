@@ -8,6 +8,7 @@ function App() {
   const [scrollRatio, setScrollRatio] = useState(0);
   const leadbellyAudio = useRef();
   const milesDavisAudio = useRef();
+  const samaraJoyAudio = useRef();
   const [readyClicked, setReadyClicked] = useState(false);
 
   const audios = [
@@ -27,6 +28,12 @@ function App() {
       mediaRef: milesDavisAudio,
       start: 9,
       end: 12.5,
+      startTime: 0,
+    },
+    {
+      mediaRef: samaraJoyAudio,
+      start: 12,
+      end: 15,
       startTime: 0,
     },
   ];
@@ -343,10 +350,10 @@ function App() {
                       appreciation in jazz. Lorraine has contributed to a space
                       that is "common, in a way," where audience and artist can
                       have a uniquely intimate exchange. Lorraine has been
-                      credited with discovering Thelonias Monk in the 40s and,
-                      up until her passing in 2018, Lorraine continued to
-                      champion younger acts like the Bad Plus and Brad Mehldau
-                      who continue to push the limits of jazz.
+                      credited with discovering prolific jazz pianist Thelonias
+                      Monk in the 40s when she convinced her then-husband (the
+                      founder of the jazz label Blue Note) to record the
+                      eccentric musician and composer.
                     </Typography>
                   </Box>
                 </Box>
@@ -541,7 +548,7 @@ function App() {
                 </Box>
               </Box>
             </ParallaxLayer>
-            <ParallaxLayer offset={7.5} speed={1}>
+            <ParallaxLayer offset={7.8} speed={1}>
               <Box
                 sx={{
                   width: '70vw',
@@ -766,22 +773,22 @@ function App() {
                   >
                     Miles Davis is unanimously known as one of the most
                     influential voices in jazz. As a jazz great, Davis naturally
-                    found himself playing at the Village Vanguard. Davis was
-                    well known for being unapologetically honest and allegedly
-                    disagreeable at times. Similar to Lead Belly, this focus on
-                    Davis’ reputation detracted from what Davis solely saw
-                    himself as – a musician. Indeed, Davis insisted on being a
-                    musician first and foremost and rejected the entertainer
-                    role that white Americans had caricatured in tropes like
-                    Uncle Tom. Whether in the media or in performance, Davis was
-                    obstinate in being taken seriously as a black musician,
-                    expecting the same respect as any contemporary, white
-                    classical musician.
+                    found himself playing at the Village Vanguard throughout the
+                    60s. Davis was well known for being unapologetically honest
+                    and allegedly disagreeable at times. Similar to Lead Belly,
+                    this focus on Davis’ reputation detracted from what Davis
+                    solely saw himself as – a musician. Indeed, Davis insisted
+                    on being a musician first and foremost and rejected the
+                    entertainer role that white Americans had caricatured in
+                    tropes like Uncle Tom. Whether in the media or in
+                    performance, Davis was obstinate in being taken seriously as
+                    a black musician, expecting the same respect as any
+                    contemporary, white classical musician.
                   </Typography>
                 </Box>
               </Box>
             </ParallaxLayer>
-            <ParallaxLayer offset={10} speed={1}>
+            <ParallaxLayer offset={10.2} speed={1}>
               <Box
                 sx={{
                   width: '70vw',
@@ -908,6 +915,115 @@ function App() {
                       all walks of life into this intimate exchange since 1935.
                     </Typography>
                   </Box>
+                </Box>
+              </Box>
+            </ParallaxLayer>
+
+            {/* SAMARA JOY */}
+            <audio loop ref={samaraJoyAudio}>
+              <source src='/samarajoy.mp3' type='audio/mp3' />
+              Your browser does not support the audio element.
+            </audio>
+            <ParallaxLayer offset={12.9} speed={0.75}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  height: '100%',
+                  opacity: `${4 * (scrollRatio - 12.25)}`,
+                }}
+              >
+                <Typography variant='h1' color='textPrimary'>
+                  Samara Joy
+                </Typography>
+                <Typography variant='h3' color='textPrimary'>
+                  1999 -
+                </Typography>
+              </Box>
+            </ParallaxLayer>
+            <ParallaxLayer
+              sticky={{ start: 12.5, end: 15 }}
+              style={{
+                opacity: `${scrollRatio - 12}`,
+                backgroundColor: 'black',
+                zIndex: '-1',
+              }}
+            >
+              <Box
+                component='img'
+                src='https://www.samarajoy.com/files/2022/08/samara-og-compressed.jpg'
+                sx={{
+                  width: '100%',
+                  height: '100%',
+                  position: 'absolute',
+                  left: '0',
+                  top: '0',
+                  objectFit: 'cover',
+                  zIndex: '-1',
+                }}
+              />
+            </ParallaxLayer>
+            <ParallaxLayer
+              sticky={{ start: 13, end: 15 }}
+              sx={{ zIndex: '-1' }}
+            >
+              <Box
+                sx={{
+                  backgroundColor: 'rgba(0,0,0,0.8)',
+                  position: 'absolute',
+                  top: '0',
+                  right: `${(scrollRatio - 13) * 100}vw`,
+                  width: '30vw',
+                  height: '100vh',
+                }}
+              >
+                <Box
+                  sx={{
+                    marginLeft: '40px',
+                    width: 'calc(100% - 80px)',
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <Typography variant='h3' color='textPrimary' mb={2}>
+                    Jazz Is Not Dead
+                  </Typography>
+                  <Typography
+                    variant='body1'
+                    color='textPrimary'
+                    sx={{ textAlign: 'justify' }}
+                    mb={2}
+                  >
+                    Today, the Village Vanguard remains at the forefront of jazz
+                    innovation. After Max Gordon’s passing in 1989, his wife
+                    Lorain Gordon took ownership of the club, and "championed
+                    younger players, like the trio The Bad Plus and pianist Brad
+                    Mehldau” much like her husband did. These aforementioned
+                    acts continue to pioneer new sounds in jazz and tend to push
+                    many layman listeners well beyond their comfort zone.
+                    Indeed, jazz continues to evolve even today at the Village
+                    Vanguard, and this is best embodied by a recent performer at
+                    the club, Samara Joy.
+                  </Typography>
+                  <Typography
+                    variant='body1'
+                    color='textPrimary'
+                    sx={{ textAlign: 'justify' }}
+                    mb={2}
+                  >
+                    Joy’s position as a key proponent of contemporary jazz has
+                    been solidified by her recent Grammy winnings, including
+                    Best New Artist and Best Jazz Vocal. She is the second-ever
+                    Jazz artist to win in the new artist category, which speaks
+                    to her ability to keep the jazz conversation alive in
+                    America. Joy, much like Lead Belly and Miles Davis,
+                    participates in a jazz that is appreciative of other
+                    cultures. With her genre and even language-blending style,
+                    Joy shows genuine engagement with other musical cultures.
+                  </Typography>
                 </Box>
               </Box>
             </ParallaxLayer>
