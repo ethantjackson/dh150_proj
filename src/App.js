@@ -7,6 +7,7 @@ function App() {
   const introVideo = useRef();
   const [scrollRatio, setScrollRatio] = useState(0);
   const leadbellyAudio = useRef();
+  const milesDavisAudio = useRef();
   const [readyClicked, setReadyClicked] = useState(false);
 
   const audios = [
@@ -20,6 +21,12 @@ function App() {
       mediaRef: leadbellyAudio,
       start: 5.5,
       end: 9,
+      startTime: 0,
+    },
+    {
+      mediaRef: milesDavisAudio,
+      start: 9,
+      end: 12.5,
       startTime: 0,
     },
   ];
@@ -329,15 +336,17 @@ function App() {
                     </Typography>
                     <Typography variant='body2' color='textPrimary'>
                       Shortly after Max Gordon's passing in 1988, his wife
-                      Lorraine Gordon took over operation of the Village
-                      Vanguard. Undeniably, she has contributed greatly to the
-                      Village Vanguard's continued commitment to innovation and
+                      Lorraine Gordon, a renowned jazz promoter in her own
+                      right, took over operation of the Village Vanguard.
+                      Undeniably, she has contributed greatly to the Village
+                      Vanguard's continued commitment to innovation and
                       appreciation in jazz. Lorraine has contributed to a space
                       that is "common, in a way," where audience and artist can
-                      have a uniquely intimate exchange. Up until her passing in
-                      2018, Lorraine continued to champion younger acts like the
-                      Bad Plus and Brad Mehldau who continue to push the limits
-                      of jazz.
+                      have a uniquely intimate exchange. Lorraine has been
+                      credited with discovering Thelonias Monk in the 40s and,
+                      up until her passing in 2018, Lorraine continued to
+                      champion younger acts like the Bad Plus and Brad Mehldau
+                      who continue to push the limits of jazz.
                     </Typography>
                   </Box>
                 </Box>
@@ -430,6 +439,8 @@ function App() {
                 />
               </Box>
             </ParallaxLayer>
+
+            {/* LEAD BELLY */}
             <ParallaxLayer offset={6} speed={-0.5}>
               <Box
                 sx={{
@@ -669,6 +680,232 @@ function App() {
                       no Lonnie Donnegan, No Beatles". Evidently, Lead Belly's
                       musical influence endured despite a lack of recognition
                       throughout much of his lifetime.
+                    </Typography>
+                  </Box>
+                </Box>
+              </Box>
+            </ParallaxLayer>
+
+            {/* MILES DAVIS */}
+            <audio loop ref={milesDavisAudio}>
+              <source src='/milesdavis.mp3' type='audio/mp3' />
+              Your browser does not support the audio element.
+            </audio>
+            <ParallaxLayer offset={9.95} speed={0.75}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  height: '100%',
+                  opacity: `${2 * (scrollRatio - 9)}`,
+                }}
+              >
+                <Typography variant='h1' color='textPrimary'>
+                  Miles Davis
+                </Typography>
+                <Typography variant='h3' color='textPrimary'>
+                  1926-1991
+                </Typography>
+              </Box>
+            </ParallaxLayer>
+            <ParallaxLayer
+              sticky={{ start: 9, end: 11.5 }}
+              style={{
+                opacity: `${scrollRatio - 9}`,
+                backgroundColor: 'black',
+                zIndex: '-1',
+              }}
+            >
+              <Box
+                component='img'
+                src='https://pbs.twimg.com/media/DqZp2HjUUAUsb-g.jpg'
+                sx={{
+                  width: '100%',
+                  height: '100%',
+                  position: 'absolute',
+                  left: '0',
+                  top: '0',
+                  objectFit: 'cover',
+                  zIndex: '-1',
+                }}
+              />
+            </ParallaxLayer>
+            <ParallaxLayer
+              sticky={{ start: 10, end: 11 }}
+              sx={{ zIndex: '-1' }}
+            >
+              <Box
+                sx={{
+                  backgroundColor: 'rgba(0,0,0,0.8)',
+                  position: 'absolute',
+                  top: '0',
+                  left: `${(scrollRatio - 10) * 100}vw`,
+                  width: '30vw',
+                  height: '100vh',
+                }}
+              >
+                <Box
+                  sx={{
+                    marginLeft: '40px',
+                    width: 'calc(100% - 80px)',
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <Typography variant='h3' color='textPrimary' mb={2}>
+                    Jazz Hits its Stride
+                  </Typography>
+                  <Typography
+                    variant='body1'
+                    color='textPrimary'
+                    sx={{ textAlign: 'justify' }}
+                    mb={2}
+                  >
+                    Miles Davis is unanimously known as one of the most
+                    influential voices in jazz. As a jazz great, Davis naturally
+                    found himself playing at the Village Vanguard. Davis was
+                    well known for being unapologetically honest and allegedly
+                    disagreeable at times. Similar to Lead Belly, this focus on
+                    Davis’ reputation detracted from what Davis solely saw
+                    himself as – a musician. Indeed, Davis insisted on being a
+                    musician first and foremost and rejected the entertainer
+                    role that white Americans had caricatured in tropes like
+                    Uncle Tom. Whether in the media or in performance, Davis was
+                    obstinate in being taken seriously as a black musician,
+                    expecting the same respect as any contemporary, white
+                    classical musician.
+                  </Typography>
+                </Box>
+              </Box>
+            </ParallaxLayer>
+            <ParallaxLayer offset={10} speed={1}>
+              <Box
+                sx={{
+                  width: '70vw',
+                  marginLeft: '30vw',
+                  height: '100vh',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <Box
+                  sx={{ height: '70vh' }}
+                  component={'img'}
+                  src={
+                    'https://static01.nyt.com/images/2016/03/13/fashion/13MILES/13MILES-articleLarge.jpg?quality=75&auto=webp&disable=upscale'
+                  }
+                />
+                <Box sx={{ position: 'absolute' }}>
+                  <Box
+                    sx={{
+                      backgroundColor: 'rgba(0,0,0,0.8)',
+                      position: 'relative',
+                      top: '20vh',
+                      left: '100px',
+                      width: '400px',
+                      textAlign: 'left',
+                    }}
+                    p={1.5}
+                  >
+                    <Typography variant='body2' color='textPrimary'>
+                      Davis’ jazz transcended racial boundaries. Besides his
+                      refusal to accept the Uncle Tom role that persisted among
+                      black artists, Davis also refused the “Crow Jim”
+                      phenomenon that some of his black contemporaries
+                      practiced. “I think prejudice one way is just as bad as
+                      the other way. I wouldn't have no other arranger but Gil
+                      Evans - we couldn't be much closer if he was my brother.”
+                      Davis respected this aspect of jazz that welcomes all to
+                      participate and contribute.
+                    </Typography>
+                  </Box>
+                </Box>
+              </Box>
+            </ParallaxLayer>
+            <ParallaxLayer offset={11} speed={1.25}>
+              <Box
+                sx={{
+                  width: '70vw',
+                  marginLeft: '15vw',
+                  height: '100vh',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <Box
+                  sx={{ height: '70vh' }}
+                  component={'img'}
+                  src={
+                    'https://media.npr.org/assets/img/2012/01/31/miles-davis-2_wide-b2ba5a4cdd0039f88f30a83a579e47dc9874b5bd-s1400-c100.jpg'
+                  }
+                />
+                <Box sx={{ position: 'absolute' }}>
+                  <Box
+                    sx={{
+                      backgroundColor: 'rgba(0,0,0,0.8)',
+                      position: 'relative',
+                      top: '20vh',
+                      right: '300px',
+                      width: '400px',
+                      textAlign: 'left',
+                    }}
+                    p={1.5}
+                  >
+                    <Typography variant='body2' color='textPrimary'>
+                      “Even in jazz - you look at the white bandleaders - if
+                      they don't want anybody messing with them when they are
+                      working, you don't hear anybody squawking. It's just if a
+                      Negro is involved that there's something wrong with him.
+                      My troubles started when I learned to play the trumpet and
+                      hadn't learned to dance.” - <b>Miles Davis</b>
+                    </Typography>
+                  </Box>
+                </Box>
+              </Box>
+            </ParallaxLayer>
+            <ParallaxLayer offset={11.9} speed={0.75}>
+              <Box
+                sx={{
+                  width: '70vw',
+                  marginLeft: '15vw',
+                  height: '100vh',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <Box
+                  sx={{ height: '70vh' }}
+                  component={'img'}
+                  src={
+                    'https://s3.amazonaws.com/allaboutjazz/photos/a_large/0f830ac79973c8dbcc129874da68ea8b.jpg'
+                  }
+                />
+                <Box sx={{ position: 'absolute' }}>
+                  <Box
+                    sx={{
+                      backgroundColor: 'rgba(0,0,0,0.8)',
+                      position: 'relative',
+                      top: '20vh',
+                      right: '300px',
+                      width: '400px',
+                      textAlign: 'left',
+                    }}
+                    p={1.5}
+                  >
+                    <Typography variant='body2' color='textPrimary'>
+                      Perhaps Davis' sometimes fierce commitment to music for
+                      music's sake is what attracted him to the Village
+                      Vanguard. With only 132 people able to squeeze into its
+                      confines, the Vanguard forces the audience to engage with
+                      the musicians practically within arm's reach. Indeed, the
+                      Vanguard has forced countless people and musicians from
+                      all walks of life into this intimate exchange since 1935.
                     </Typography>
                   </Box>
                 </Box>
