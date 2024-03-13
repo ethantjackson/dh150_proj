@@ -1,32 +1,49 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { createTheme, ThemeProvider, Typography, Box } from '@mui/material';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 
 function App() {
   const parallaxRef = useRef();
-  const introVideoRef = useCallback((node) => {
-    console.log(node);
-    introVideo.current = node;
-  }, []);
   const introVideo = useRef();
   const [scrollRatio, setScrollRatio] = useState(0);
+  const leadbellyAudio = useRef();
   const [readyClicked, setReadyClicked] = useState(false);
+
+  const audios = [
+    {
+      mediaRef: introVideo,
+      start: 0,
+      end: 6,
+      startTime: 92,
+    },
+    {
+      mediaRef: leadbellyAudio,
+      start: 5.5,
+      end: 9,
+      startTime: 0,
+    },
+  ];
 
   const handleScroll = () => {
     if (!parallaxRef.current) return;
     const scrollRatio = parallaxRef.current.current / parallaxRef.current.space;
     setScrollRatio(scrollRatio);
-    console.log(scrollRatio);
-    const newVolume =
-      scrollRatio <= 6
-        ? Math.min(1, (scrollRatio * 2) ** 2, ((scrollRatio - 6) * 2) ** 2)
-        : 0;
-    if (introVideo.current) introVideo.current.volume = newVolume;
-    if (newVolume > 0 && introVideo.current.paused) {
-      introVideo.current.currentTime = 92;
-      introVideo.current.play();
-    }
-    if (newVolume === 0) introVideo.current.pause();
+    audios.forEach(({ mediaRef, start, end, startTime }) => {
+      let newVolume =
+        scrollRatio >= start && scrollRatio <= end
+          ? Math.min(
+              1,
+              ((scrollRatio - start) * 2) ** 2,
+              ((scrollRatio - end) * 2) ** 2
+            )
+          : 0;
+      if (mediaRef.current) mediaRef.current.volume = newVolume;
+      if (newVolume > 0 && mediaRef.current.paused) {
+        mediaRef.current.currentTime = startTime;
+        mediaRef.current.play();
+      }
+      if (newVolume === 0) mediaRef.current.pause();
+    });
   };
 
   useEffect(() => {
@@ -74,7 +91,7 @@ function App() {
           <Parallax
             className='parallax'
             ref={parallaxRef}
-            pages={10}
+            pages={15}
             style={{
               left: '0',
               top: '0',
@@ -106,7 +123,7 @@ function App() {
             >
               <Box sx={{ width: '100vw', height: '100vh' }}>
                 <video
-                  ref={introVideoRef}
+                  ref={introVideo}
                   id='introVideo'
                   width='100%'
                   height='100%'
@@ -411,6 +428,250 @@ function App() {
                   src='https://greenwichvillagehistory.files.wordpress.com/2011/12/photos-223-box-51-folder-10096-leadbelly-white-bow-tie-playing-guitar-white-background.jpg'
                   sx={{ width: '30vw' }}
                 />
+              </Box>
+            </ParallaxLayer>
+            <ParallaxLayer offset={6} speed={-0.5}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  height: '100%',
+                  opacity: `${Math.min(
+                    2 * (scrollRatio - 5.25),
+                    2 * (6.5 - scrollRatio)
+                  )}`,
+                }}
+              >
+                <Typography variant='h1' color='textPrimary'>
+                  Lead Belly
+                </Typography>
+                <Typography variant='h3' color='textPrimary'>
+                  1888 - 1949
+                </Typography>
+              </Box>
+            </ParallaxLayer>
+            <ParallaxLayer
+              sticky={{ start: 6, end: 8.5 }}
+              style={{
+                opacity: `${scrollRatio - 5.75}`,
+                backgroundColor: 'black',
+                zIndex: '-1',
+              }}
+            >
+              <Box
+                component='img'
+                src='https://myauctionfinds.com/wp-content/uploads/2018/03/leadbelly1.jpg'
+                sx={{
+                  width: '100%',
+                  height: '100%',
+                  position: 'absolute',
+                  left: '0',
+                  top: '0',
+                  objectFit: 'cover',
+                  zIndex: '-1',
+                }}
+              />
+              <audio loop ref={leadbellyAudio}>
+                <source src='/leadbelly.mp3' type='audio/mp3' />
+                Your browser does not support the audio element.
+              </audio>
+              <Box
+                sx={{
+                  backgroundColor: 'rgba(0,0,0,0.8)',
+                  position: 'absolute',
+                  top: '0',
+                  left: `${-70 * (scrollRatio - 6.4) + 70 * 2}vw`,
+                  width: '30vw',
+                  height: '100vh',
+                }}
+              >
+                <Box
+                  sx={{
+                    marginLeft: '40px',
+                    width: 'calc(100% - 80px)',
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <Typography variant='h4' color='textPrimary' mb={2}>
+                    From Lead Belly to Nirvana?
+                  </Typography>
+                  <Typography
+                    variant='body1'
+                    color='textPrimary'
+                    sx={{ textAlign: 'justify' }}
+                    mb={2}
+                  >
+                    Lead Belly was one of the early performers at The Village
+                    Vanguard. Known for his signature, Mexican-inspired
+                    12-string guitar, Lead Belly embodies one of the unique
+                    qualities of jazz – genuine appreciation for and
+                    incorporation of other cultures. Despite his innovative and
+                    prolific musicianship, Lead Belly’s career was plagued with
+                    overbearing media coverage that focused on his race,
+                    criminal history, and various controversies that detracted
+                    from his music. Regardless, with platforms like The Village
+                    Vanguard, Lead Belly’s musical legacy was eventually
+                    solidified. Lead Belly’s influence is apparent not only in
+                    his contemporaries but also in later acts including the
+                    Beatles and even Nirvana, who wore their influence on their
+                    sleeves covering Lead Belly’s “Where Did You Sleep Last
+                    Night?”. Ultimately, jazz music is heavily comprised of a
+                    set of songs (“standards”) that different musicians create
+                    their own renditions of. In a way, Nirvana continued this
+                    jazz culture of appreciation and reinterpretation in their
+                    cover of Lead Belly’s standard. This culture thrives when we
+                    appreciate artists for their music, regardless of their
+                    backgrounds, as The Village Vanguard did with Lead Belly.
+                  </Typography>
+                </Box>
+              </Box>
+            </ParallaxLayer>
+            <ParallaxLayer offset={7.5} speed={1}>
+              <Box
+                sx={{
+                  width: '70vw',
+                  height: '100vh',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <Box
+                  sx={{ height: '70vh' }}
+                  component={'img'}
+                  src={
+                    'https://64parishes.org/wp-content/uploads/9632180778_86fd36b2ee_o-1.jpg'
+                  }
+                />
+                <Box sx={{ position: 'absolute' }}>
+                  <Box
+                    sx={{
+                      backgroundColor: 'rgba(0,0,0,0.8)',
+                      position: 'relative',
+                      top: '20vh',
+                      left: '100px',
+                      width: '400px',
+                      textAlign: 'left',
+                    }}
+                    p={1.5}
+                  >
+                    <Typography
+                      variant='body2'
+                      color='textPrimary'
+                      sx={{ fontWeight: 'bold' }}
+                      mb={0.5}
+                    >
+                      Humble Beginnings
+                    </Typography>
+                    <Typography variant='body2' color='textPrimary'>
+                      Lead Belly's career began in Saint Paul's Bottoms, the red
+                      light district of Lousianna. Here, Lead Belly began
+                      playing at the various salloons, dance halls, and
+                      brothels.
+                    </Typography>
+                  </Box>
+                </Box>
+              </Box>
+            </ParallaxLayer>
+            <ParallaxLayer offset={8.5} speed={5}>
+              <Box
+                sx={{
+                  width: '70vw',
+                  marginLeft: '40vw',
+                  height: '100vh',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <Box
+                  sx={{ height: '70vh' }}
+                  component={'img'}
+                  src={
+                    'https://c3c7n5y6.rocketcdn.me/wp-content/uploads/2021/01/Lead-Belly-1.webp'
+                  }
+                />
+                <Box sx={{ position: 'absolute' }}>
+                  <Box
+                    sx={{
+                      backgroundColor: 'rgba(0,0,0,0.8)',
+                      position: 'relative',
+                      top: '20vh',
+                      left: '100px',
+                      width: '400px',
+                      textAlign: 'left',
+                    }}
+                    p={1.5}
+                  >
+                    <Typography
+                      variant='body2'
+                      color='textPrimary'
+                      sx={{ fontWeight: 'bold' }}
+                      mb={0.5}
+                    >
+                      The 12-String King
+                    </Typography>
+                    <Typography variant='body2' color='textPrimary'>
+                      12-string guitars were intitially novelty instruments,
+                      likely inspired by the Mexican guitarra séptima or bajo
+                      sexto. As such, these instruments were usually cheaply
+                      made and consequently made their way into the hands of
+                      poor blues musicians like Lead Belly.
+                    </Typography>
+                  </Box>
+                </Box>
+              </Box>
+            </ParallaxLayer>
+            <ParallaxLayer offset={8.95} speed={1.25}>
+              <Box
+                sx={{
+                  width: '70vw',
+                  marginLeft: '30vw',
+                  height: '100vh',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <Box
+                  sx={{ height: '70vh' }}
+                  component={'img'}
+                  src={
+                    'https://cdn.britannica.com/57/178357-050-7A22FEA9/Movie-still-Beatle-George-Harrison-Help-1965.jpg'
+                  }
+                />
+                <Box sx={{ position: 'absolute' }}>
+                  <Box
+                    sx={{
+                      backgroundColor: 'rgba(0,0,0,0.8)',
+                      position: 'relative',
+                      top: '20vh',
+                      left: '100px',
+                      width: '400px',
+                      textAlign: 'left',
+                    }}
+                    p={1.5}
+                  >
+                    <Typography
+                      variant='body2'
+                      color='textPrimary'
+                      sx={{ fontWeight: 'bold' }}
+                      mb={0.5}
+                    >
+                      Timeless Influence
+                    </Typography>
+                    <Typography variant='body2' color='textPrimary'>
+                      George Harrison of Beatles fame has said, "No Leadbelly,
+                      no Lonnie Donnegan, No Beatles". Evidently, Lead Belly's
+                      musical influence endured despite a lack of recognition
+                      throughout much of his lifetime.
+                    </Typography>
+                  </Box>
+                </Box>
               </Box>
             </ParallaxLayer>
           </Parallax>
